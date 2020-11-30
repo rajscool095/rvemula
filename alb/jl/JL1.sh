@@ -2,7 +2,7 @@
 yum install -y httpd php git
 
 cd /var/www/html
-wget https://github.com/rajscool095/rvemula/blob/main/alb/jl/JL1.png
+wget https://github.com/rajscool095/rvemula/blob/main/alb/jl/JL.png
 mv JL.jpg justiceleague.jpg
 wget https://github.com/rajscool095/rvemula/blob/main/alb/jl/index.php
 mv /var/www/html/htaccess /var/www/html/.htaccess
