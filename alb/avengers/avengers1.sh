@@ -2,9 +2,9 @@
 yum install -y httpd php git
 
 cd /var/www/html
-wget https://github.com/rajscool095/rvemula/blob/main/alb/avengers/avengers1.png
-mv avengers1.png avengers.jpg
-wget https://github.com/rajscool095/rvemula/blob/main/alb/avengers/index.php
+wget https://github.com/rajscool095/rvemula/raw/main/alb/avengers/avengers1.png
+mv avebgers1.png avengers.jpg
+wget https://github.com/rajscool095/rvemula/raw/main/alb/avengers/index.php
 mv /var/www/html/htaccess /var/www/html/.htaccess
 
 mkdir /var/www/html/avengers
