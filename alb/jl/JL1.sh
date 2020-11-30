@@ -8,7 +8,7 @@ wget https://github.com/rajscool095/rvemula/raw/main/alb/jl/index.php
 mv /var/www/html/htaccess /var/www/html/.htaccess
 
 mkdir /var/www/html/jl
-cp /var/www/html/justiceleague.jpg.jpg /var/www/html/jl
+cp /var/www/html/justiceleague.jpg /var/www/html/jl
 cp /var/www/html/index.php /var/www/html/jl
 cp /var/www/html/.htaccess /var/www/html/jl
 
