@@ -5,13 +5,19 @@
 <center>
 <IMG SRC="avengers.jpg" ALT="error downloading file"><br>
 <?php
-    function getEC2InstanceMetadata($path) {
-      $url = 'http://169.254.169.254/latest/meta-data/' . $path;
-      $curl = curl_init($url);
-      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-      $data = curl_exec($curl);
-      curl_close($curl);
-      return $data;
+function getEC2InstanceMetadata($path) {
+      $tokenUrl = 'http://169.254.169.254/latest/api/token';
+      $metadataUrl = 'http://169.254.169.254/latest/meta-data/' . $path;
+
+      // Retrieve the metadata token
+      $tokenCmd = 'curl -X PUT "' . $tokenUrl . '" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"';
+      $token = exec($tokenCmd);
+
+      // Retrieve the metadata using the token
+      $metadataCmd = 'curl -H "X-aws-ec2-metadata-token: ' . $token . '" ' . $metadataUrl;
+      $metadata = exec($metadataCmd);
+
+      return $metadata;
     }
     
     $publicIpv4 = getEC2InstanceMetadata('public-ipv4');
