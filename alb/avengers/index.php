@@ -5,8 +5,18 @@
 <center>
 <IMG SRC="avengers.jpg" ALT="error downloading file"><br>
 <?php
-$eip = file_get_contents('TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` && curl -H "X-aws-ec2-metadata-token: $TOKEN" -v http://169.254.169.254/latest/meta-data/public-ipv4');
-echo $eip;
+    function getEC2InstanceMetadata($path) {
+      $url = 'http://169.254.169.254/latest/meta-data/' . $path;
+      $curl = curl_init($url);
+      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+      $data = curl_exec($curl);
+      curl_close($curl);
+      return $data;
+    }
+    
+    $publicIpv4 = getEC2InstanceMetadata('public-ipv4');
+    
+    echo "<p><strong>Public IP Address:</strong> $publicIpv4</p>";
 ?>
 </center>
 </h1>
